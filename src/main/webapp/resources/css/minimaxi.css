@@ -1,0 +1,707 @@
+/*
+ * Thanks to Author: Carlos Alvarez
+ * URL: http://alvarez.is
+ *
+ * Project Name: SPOT - Free Bootstrap 3 Theme
+ * Version: 1.0
+ * URL: http://blacktie.co
+ */
+ 
+ html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+ 
+ body {
+  	background-color: #ffffff;
+    font-family: "Montserrat";
+    font-weight: normal;
+    font-size: 12px;
+	line-height: 18px;
+    color: #555;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+    
+}
+
+.superbar {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background: #3498db;
+	color: white;
+	/* border-bottom: 2px solid #d9d9d9; */
+}
+
+.navbar {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	/* border-bottom: 2px solid #d9d9d9; */
+}
+
+.navbar-inverse {
+	background: #425a6b;
+}
+
+.navbar-acsi {
+	margin-bottom: 0px;
+}
+
+.nav-list li a {
+   border: 1px solid rgb(229, 229, 229);
+   padding: 8px 10px;
+}
+
+.navbar-brand {
+	font-size: 32pt;
+}
+
+.nav-list .nav-header li {
+   border: 1px solid rgb(229, 229, 229);
+   padding: 8px 10px;
+}
+
+.nav > li {
+	font-size: 14pt;
+}
+
+.carousel {
+	
+	margin-bottom: 30px;
+	
+}
+
+.carousel-control.left {
+	background-image: none;
+}
+
+.carousel-control.right {
+	background-image: none;
+}
+
+
+.carousel-inner > .item > img {
+	width: 100%;
+}
+
+.banner-board {
+    height: 1em;
+    border-top: 1px solid #c4cacb;
+    /* border-bottom: 1px solid #d9d9d9; */
+    background-color: #e9e9e9;
+}
+
+.showcases {
+	margin-bottom: 1em;
+}
+
+.showcases .showcase {
+	position: relative;
+	text-align: center;
+	padding: 25px; 75px;
+	border: 1px solid #e6e6e6;
+  	flex: 1;
+}
+}
+
+#kijker {
+	color: white;
+}
+
+section {
+	/* border-bottom: 2px solid #d9d9d9; */
+}
+
+.section-header {
+	background: #3498db;
+	padding-top: 10px;
+	/* padding-bottom: 10px; */
+	text-align: center;
+}
+
+.section-footer {
+	color: white;
+	background: black;
+	padding-bottom: 35px;
+}
+
+.section-header h4 {
+	color: white;
+	font-weight: 700;
+}
+
+.section-header p {
+	color: white;
+}
+
+.north {
+	background-color: #3498db;
+	color: white;
+	border-color: white;
+}
+
+.south {
+	background-color: #ffb162;
+	color: black;
+}
+
+.plus {
+	background-color: white;
+}
+
+.green {
+	background-color: #949730;
+}
+
+.minus {
+	background-color: #f0f0f0;
+}
+
+.cell .no {
+	border-style: none;
+}
+
+.zero {
+	background-color: #efefef;
+	color: black;
+}
+
+.icon-chevron-right {
+   float: right;
+   margin-top: 10px;
+}
+
+.icon-chevron-down {
+   float: right;
+   margin-top: 10px;
+}
+
+.nav-list .icon-share {
+   float: right;
+   margin-top: 10px;
+}
+
+.content {
+	border: 3px solid #f3a55a;
+	border-radius: 5px;
+	padding: 10px;
+	background-color: #ffffff;
+}
+
+.content li {
+	margin-bottom: 10px;
+}
+
+.table-none td {
+	border-top: none;
+}
+
+.nav-list > .subactive > a {
+	color: #ffffff;
+  	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+  	background-color: #00cc88;
+}
+ 
+/* FONTS */
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,300,700,900);
+
+/* OVERALL ASPECT */
+
+/* Titles */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 300;
+}
+
+.cell h1 {
+	font-size: 20pt;
+}
+
+.title {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.south .title {
+	border-bottom-color: white;
+}
+
+.thumb {
+	float: right;
+	height: 120px;
+	width: 100px;
+	margin-top: 0px;
+	margin-bottom: 10px;
+	overflow: inherit;  
+	border: thin;
+	border-style: solid;
+}
+
+.problem {
+	margin: 1em;
+	padding: 5px;
+	line-height: 2.5em;
+}
+
+/* Paragraph & Typographic */
+p {
+    line-height: 28px;
+    margin-bottom: 25px;
+}
+
+.cell {
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	height: 100%;
+}
+
+.cell ul {
+	font-size: 14px;
+	line-height: 32px;	
+}
+
+.cell-content {
+	margin: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 1px;	
+	padding-bottom: 10px;
+	overflow: auto;
+	border: 2px solid #d9d9d9;
+}
+
+.header {
+	width: 100%;
+	border-bottom: 2px solid #595959;
+	margin-bottom: 10px;
+}
+
+.narrow p {
+    line-height: 20px;
+}
+
+.centered {
+    text-align: center;
+}
+
+/* Links */
+a {
+    color: #337ab7;
+    word-wrap: break-word;
+
+    -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -o-transition: color 0.1s ease-in, background 0.1s ease-in;
+    transition: color 0.1s ease-in, background 0.1s ease-in;
+}
+
+.subheading {
+	font-style: italic;
+	color: #f9a530;
+}
+
+.lead {
+	font-size: 18px;
+	line-height: 24px;
+}
+
+a:hover,
+a:focus {
+    color: #7b7b7b;
+    text-decoration: none;
+    outline: 0;
+}
+
+a:before,
+a:after {
+    -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -o-transition: color 0.1s ease-in, background 0.1s ease-in;
+    transition: color 0.1s ease-in, background 0.1s ease-in;
+}
+
+ hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/* ==========================================================================
+   Wrap Sections
+   ========================================================================== */
+   
+.banner {
+	background: #878787;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.banner h4 {
+	color: white;
+	font-weight: 700;
+}
+
+.banner p {
+	color: white;
+}
+
+/* Dark Grey Wrap */
+.white {
+	background: #425a6b;
+	padding-top: 70px;
+	padding-bottom: 70px;
+	text-align: center;
+}
+
+#dg h4 {
+	font-weight: 700;
+}
+
+/* Light Grey */
+.lg {
+	background: #ebebeb;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: left;
+}
+
+.lg h4 {
+	font-weight: 700;
+}
+
+
+/* Red Wrap */
+#r {
+	background: #ff7878;
+	padding-top: 35px;
+	padding-bottom: 35px;
+}
+
+#r h4 {
+	color: white;
+	font-weight: 700;
+}
+
+#r p {
+	color: white;
+}
+
+/* Blue Wrap */
+
+#blue {
+	background: #3498db;
+	padding-top: 35px;
+	padding-bottom: 35px;
+}
+
+#blue h4 {
+	color: white;
+	font-weight: 700;
+}
+
+#blue p {
+	color: white;
+}
+
+
+
+/* Footer Wrap */
+#f {
+	background: #2d2d2d;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+#f i {
+	color: #white;
+	font-size: 16px;
+	padding: 10px;
+}
+
+#f i:hover {
+	color: #ff7878;
+}
+
+#f a {
+	color: #bdbdbd;
+	font-size: 12px;
+}
+
+#f span {
+	color: #bdbdbd;
+	font-size: 12px;
+}
+
+/****** SECTIONS *****/
+
+.w {
+	padding-top: 35px;
+}
+
+.w h4 {
+	font-weight: 700;
+}
+
+.wb {
+	padding-top: 35px;
+	margin-bottom: 0px;
+}
+
+.wb h4 {
+	font-weight: 700;
+}
+
+.desc {
+	padding-top: 35px;
+}
+
+.desc h4 {
+	font-weight: 700;
+}
+
+.desc i {
+	color: #ff7878;
+	font-size: 12px;
+	padding: 5px;
+}
+
+/***** MODAL CONTACT *****/
+.modal-content {
+	border-radius: 0px;
+
+}
+
+.modal-header {
+	background: #bdbdbd;
+	color: white;
+}
+
+.modal-header h4 {
+	font-weight: 700;
+}
+
+.modal-body {
+	background: #f2f2f2;
+    font-family: "Lato";
+    font-weight: 300;
+    font-size: 16px;
+    color: #555;
+}
+
+.modal-footer {
+	background: #f2f2f2;
+	margin-top: 0px; 
+}
+
+/* ==========================================================================
+   Pricing Tables
+   ========================================================================== */
+   
+.pricing-option {
+    padding-bottom: 40px;
+}
+
+.pricing-option .pricing-top {
+    position: relative;
+    background: #222;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+
+    padding: 40px 20px 30px 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.pricing-option .pricing-top .special-label {
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #1abc9c;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 3px 0;
+}
+
+.special .pricing-top {
+    background: black;
+}
+
+.pricing-option .pricing-edition {
+    text-transform: uppercase;
+    display: block;
+    font-size: 25px;
+    letter-spacing: 8px;
+}
+
+.pricing-option .price {
+    display: inline-block;
+    position: relative;
+}
+
+.pricing-option .price sup {
+    position: absolute;
+    top: 50px;
+    left: -10px;
+    font-size: 24px;
+}
+
+.pricing-option .price .price-amount {
+    font-size: 108px;
+    letter-spacing: -4px;
+}
+
+.pricing-option .price small {
+    position: relative;
+    left: -10px;
+    font-size: 18px;
+}
+
+.pricing-option ul {
+    list-style: none;
+    margin: 0;
+    background: #eee;
+    text-align: center;
+    padding-left: 0px;
+}
+
+.pricing-option ul li {
+    border-bottom: solid 1px #e1e1e1;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.pricing-option .pricing-signup {
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px 10px;
+    color: white;
+    background: #1abc9c;
+}
+
+.pricing-option .pricing-signup:hover {
+    background: #ff7878;
+}
+
+.ok {
+	background-color: #55cc55;
+}
+
+.nok {
+	background-color: #cc5555;
+}
+
+.nowrap {
+	white-space: nowrap;
+}
+
+#htmltagcloud {
+	line-height:2.4em;
+	word-spacing:normal;
+	letter-spacing:normal;
+	text-transform:none;
+	text-align:justify;
+	text-indent:0
+}
+
+#htmltagcloud a:link {
+	text-decoration:none;
+}
+
+.group {
+	border: 3px solid #f3a55a;
+	border-radius: 5px;
+	padding: 10px;
+	margin: 10px;
+	background-color: #ffffff;
+}
+
+.nut >tbody > tr > td {
+	vertical-align: middle;
+}
+
+.table-borderless > tbody > tr > td {
+     border-top: 0px solid #ddd;
+}
+
+.vibes {
+	font-family: 'Merienda One';
+}
+
+.more {
+	position: absolute;
+	bottom: 30px;
+}
+
+.sect {
+	color: #425a6b;
+	margin-top: 0px;
+	padding-top: 20px;
+	width: 100%;
+	border-top: medium;
+	border-top-style: solid;
+	border-top-color: white;
+	text-align: center;
+}
+
+#wlcm {
+	margin-top: 20px;
+}
+
+.intro {
+	
+	font-style: italic;
+	
+}
+
+#team-picture img {
+	width: 100%;
+}
+
+.therapist {
+	padding-top: 20px;
+}
+
+.therapist ul {
+	list-style-type:none
+}
+
+.therapy {
+	text-align: justify;
+}
+
+.therapy p {
+	line-height: 18px;
+}
+
+#wrapper {
+    min-height: 100%;
+    position: relative;
+}
+
+.readOn {
+    width: 100%;
+    height: 4em;
+	padding-top: 1em;
+	padding-bottom: 2em;
+	position: absolute;
+	bottom: 0;
+	left: 0;	
+}
+
+.readOn i {
+    color: white;	
+}

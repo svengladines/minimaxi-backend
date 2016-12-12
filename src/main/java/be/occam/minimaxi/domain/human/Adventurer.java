@@ -80,7 +80,7 @@ public class Adventurer {
 		try {
 		
 			ResponseEntity<AdventureDTO[] > putResponse
-				= putJSON( url, toWrite  );
+				= postJSON( url, toWrite  );
 	
 			logger.info( "PUT response code: {} ", putResponse.getStatusCode() );
 			logger.info( "PUT response body: {} ", putResponse.getBody() );

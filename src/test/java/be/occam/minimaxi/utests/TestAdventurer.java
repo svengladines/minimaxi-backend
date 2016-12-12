@@ -14,7 +14,6 @@ public class TestAdventurer {
 		
 		adventurer.write( "svekke", adventurer.read( "svekke" ) );
 		
-		
 	}
 
 }
