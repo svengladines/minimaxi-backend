@@ -30,10 +30,7 @@
     
   </head>
 		
-	<script type="text/javascript" src="resources/javascript/jquery-1.10.2.js"></script>
-    <script type="text/javascript" src="resources/javascript/lodash-4.5.1.js"></script>
-    <script type="text/javascript" src="resources/javascript/moment.js"></script>
-    <script type="text/javascript" src="resources/javascript/templates.js"></script>
+	<script type="text/javascript" src="resources/jquery-1.11.1/jquery.js"></script>
     <script type="text/javascript" src="resources/bootstrap-3.3.5/js/bootstrap.js"></script>	
     <script type="text/javascript" src="resources/javascript/minimaxi.js"></script>	
 
@@ -93,13 +90,13 @@
 				<h3>Avontuur</h3>
 				
 				<div class="form-group">
-					<label for="organisation-name" class="col-sm-4 control-label">Titel (*)</label>
+					<label for="title" class="col-sm-4 control-label">Titel (*)</label>
 					<div class="col-sm-3">	
 						<input name="title" type="text" class="form-control" required="required"></input>
 					</div>
 				</div>
 				<div class="form-group">
-						<label for="organisation-gsm" class="col-sm-4 control-label">Uitleg (*)</label>
+						<label for="description" class="col-sm-4 control-label">Uitleg (*)</label>
 						<div class="col-sm-8">
 							<textarea name="description" class="form-control" rows="10" cols="64" required="required"></textarea>
 						</div>
@@ -107,7 +104,7 @@
 				<div class="form-group">
 						<label for="organisation-email" class="col-sm-4 control-label">Datum (*)</label>
 					    <div class="col-xs-2">
-							<input id="momentDay" name="birthDay" type="text" value="" pattern="[0-9]*" maxlength="2" placeholder="Dag" class="form-control" autocomplete="on" required="required">
+							<input name="momentDay" type="text" value="" pattern="[0-9]*" maxlength="2" placeholder="Dag" class="form-control" autocomplete="on" required="required">
 						</div>
 				      <div class="col-xs-2">
 				        <select name="momentMonth" class="form-control">
@@ -126,15 +123,16 @@
 				        </select>
 				      </div>
     				<div class="col-xs-2">
-      					<input name="momentYear" value="" type="text" pattern="[0-9]*" maxlength="4" placeholder="Jaar" class="form-control" required="required">
+      					<input name="momentYear" value="2016" type="text" pattern="[0-9]*" maxlength="4" placeholder="Jaar" class="form-control" required="required">
     				</div>
     				<div class="col-xs-2">
     				</div>
   				</div>
   				<div class="form-group">
-					<label for="media-type" class="col-sm-4 control-label">Type (*)</label>
+					<label for="mediaType" class="col-sm-4 control-label">Type (*)</label>
 					<div class="col-sm-3">	
-						<select name="media-type" class="form-control">
+						<select name="mediaType" class="form-control">
+							<option value="Image">Tekstje</option>
 							<option value="Image">Afbeelding</option>
 							<option value="Audio">Geluid</option>
 							<option value="Video">Video</option>
@@ -143,75 +141,72 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="media-type" class="col-sm-4 control-label">Voor wie (*)</label>
+					<label for="recipients" class="col-sm-4 control-label">Voor wie (*)</label>
 					<div class="col-sm-3">	
 						<div class="checkbox">
 							<label>
-						    <input type="checkbox" value="Mother">
+						    <input type="checkbox" name="recipients" value="mama">
 						    Mama
 						  </label>
 						</div>
 						<div class="checkbox">
 						  <label>
-						    <input type="checkbox" value="Father">
+						    <input type="checkbox" name="recipients" value="papa">
 						    Papa
 						  </label>
 						 </div>
 						 <div class="checkbox">
 						  <label>
-						    <input type="checkbox" value="GodMother">
+						    <input type="checkbox" name="recipients" value="meter">
 						    Meter
 						  </label>
 						</div>
 						<div class="checkbox disabled">
 						  <label>
-						    <input type="checkbox" value="GodFather">
+						    <input type="checkbox" name="recipients" value="peter">
 						    Peter
+						  </label>
+						</div>
+					</div>
+					<div class="col-sm-3">	
+						<div class="checkbox">
+						  <label>
+						    <input type="checkbox" name="recipients" value="moeke">
+						    Moeke en vake
+						  </label>
+						 </div>
+						 <div class="checkbox">
+						  <label>
+						    <input type="checkbox" name="recipients" value="oma">
+						    Oma en opa
+						  </label>
+						</div>
+						<div class="checkbox disabled">
+						  <label>
+						    <input type="checkbox" value="rest">
+						    Curieuzeneuzen
 						  </label>
 						</div>
 					</div>
 				</div>
 				
+				<div class="form-group">
+						<label class="col-sm-4 control-label"></label>
+						<div class="col-sm-8">
+							<button type="submit" id="submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp;Verstuur</button>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 control-label"></label>
+						<div class="col-sm-8">
+							<div id="submitStatus" class="hidden"></div>
+						</div>
+					</div>
+				
 				</form>
 				
 			</div>
 			
-			<div class="row">
-				
-				<h3>Media</h3>
-				
-				<form id="multipleForm" action="api/accounts" method="post" class="form-horizontal" enctype="multipart/form-data">
-			
-					<fieldset>
-						<div id="family" class="form-group">
-								<label for="uploadButton" class="col-sm-4 control-label"><fmt:message key="upload.file"/></label>
-								<div class="col-sm-4">
-									<input id="fileInput" type="file" class="form-control" required>
-									<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-									<span class="help-block hidden"></span>
-								</div>
-						</div>
-					</fieldset>
-				
-					<fieldset>
-
-						<div class="form-group">
-							<label class="col-sm-4 control-label"></label>
-							<div class="col-sm-8">
-								<button type="submit" id="submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp;Verstuur</button>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-4 control-label"></label>
-							<div class="col-sm-8">
-								<div id="submitStatus" class="hidden"></div>
-							</div>
-						</div>
-					</fieldset>
-				
-				</form>
-			
-			</div>
 		</div>
 		
 	</section>
@@ -256,8 +251,8 @@
 			
 		var type = "json";
 
-		var url = "http://inacsi-backend.appspot.com/api/entries";
-		// var url = "http://localhost:8068/api/entries";
+		var url = "api/entries";
+		//var url = "http://localhost:8068/api/entries";
 
 		var fdata = new FormData();
 

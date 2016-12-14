@@ -3,6 +3,7 @@ package be.occam.minimaxi.utests;
 import org.junit.Test;
 
 import be.occam.minimaxi.domain.human.Adventurer;
+import be.occam.utils.ftp.FTPClient;
 
 public class TestAdventurer {
 	
@@ -11,6 +12,11 @@ public class TestAdventurer {
 		
 		Adventurer adventurer
 			= new Adventurer();
+		
+		FTPClient ftpClient  
+			= new FTPClient( "ftp.foo.bar", "usr", "pw");
+		
+		adventurer.setFTPClient( ftpClient );
 		
 		adventurer.write( "svekke", adventurer.read( "svekke" ) );
 		

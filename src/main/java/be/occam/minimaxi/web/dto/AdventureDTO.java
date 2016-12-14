@@ -62,5 +62,5 @@ public class AdventureDTO {
 	public void setMediaURL(String mediaURL) {
 		this.mediaURL = mediaURL;
 	}
-
+	
 }

@@ -1,12 +1,15 @@
 package be.occam.minimaxi.domain.human;
 
 import static be.occam.utils.javax.Utils.list;
-import static be.occam.utils.spring.web.Client.*;
+import static be.occam.utils.spring.web.Client.getJSON;
+import static be.occam.utils.spring.web.Client.putJSON;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.annotation.Resource;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
@@ -15,6 +18,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 import be.occam.minimaxi.web.dto.AdventureDTO;
+import be.occam.utils.ftp.FTPClient;
 
 public class Adventurer {
 	
@@ -24,7 +28,13 @@ public class Adventurer {
 	protected final String baseAdventureURL
 		= "http://www.debrodders.be/svekke/minimaxi/adventures";
 	
+	protected final String baseFTPPath
+		= "/svekke/minimaxi/adventures";
+	
 	protected final ObjectMapper objectMapper;
+	
+	@Resource
+	protected FTPClient ftpClient;
 	
 	public Adventurer() {
 		
@@ -66,8 +76,11 @@ public class Adventurer {
 	
 	public void write( String recipient, List<AdventureDTO> adventures ) {
 		
-		String url
-			= new StringBuilder( this.baseAdventureURL ).append("/").append( recipient ).append("/adventures.json").toString();
+		String path
+			= new StringBuilder( this.baseFTPPath ).append("/").append( recipient ).toString();
+		
+		String fileName
+			= "adventures.json";
 		
 		Map<String, String> headers
 			= this.headers();
@@ -79,15 +92,18 @@ public class Adventurer {
 		
 		try {
 		
+			/*
 			ResponseEntity<AdventureDTO[] > putResponse
-				= postJSON( url, toWrite  );
+				= putJSON( url, toWrite  );
 	
 			logger.info( "PUT response code: {} ", putResponse.getStatusCode() );
 			logger.info( "PUT response body: {} ", putResponse.getBody() );
+			*/
+			 String json 
+				= this.objectMapper.writeValueAsString( adventures );
+			 
+			 this.ftpClient.putTextFile(path, fileName, json );
 	
-			// String json 
-				// = this.objectMapper.writeValueAsString( adventures );
-			
 			// logger.info( "written adventures as {}", json );
 			
 		} catch (Exception e) {
@@ -105,6 +121,12 @@ public class Adventurer {
 	    headers.put("Accept", "application/json");
 	    
 		return headers;
+		
+	}
+	
+	public void setFTPClient( FTPClient ftpClient ) {
+		
+		this.ftpClient = ftpClient;
 		
 	}
 

@@ -9,10 +9,10 @@ import com.google.appengine.tools.development.testing.LocalAppIdentityServiceTes
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 
-public class RunInAcsiWebApp_Development extends JTest {
+public class RunMiniMaxi_Development extends JTest {
 	
-	public RunInAcsiWebApp_Development() {
-		super( "/", 8068, ConfigurationProfiles.DEV );
+	public RunMiniMaxi_Development() {
+		super( "/", 8069, ConfigurationProfiles.DEV );
 	}
 	
 	@Test

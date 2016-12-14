@@ -13,9 +13,10 @@ public class EntryDTO {
 	String title;
 	String description;
 	List<String> recipients;
-	MediaType mediaType;
-	Date moment;
-	Date posted;
+	String mediaType;
+	String momentDay;
+	String momentMonth;
+	String momentYear;
 	
 	public String getTitle() {
 		return title;
@@ -41,28 +42,36 @@ public class EntryDTO {
 		this.recipients = recipients;
 	}
 
-	public MediaType getMediaType() {
+	public String getMediaType() {
 		return mediaType;
 	}
 
-	public void setMediaType(MediaType mediaType) {
+	public void setMediaType(String mediaType) {
 		this.mediaType = mediaType;
 	}
-
-	public Date getMoment() {
-		return moment;
+	
+	public String getMomentDay() {
+		return momentDay;
 	}
 
-	public void setMoment(Date moment) {
-		this.moment = moment;
+	public void setMomentDay(String momentDay) {
+		this.momentDay = momentDay;
 	}
 
-	public Date getPosted() {
-		return posted;
+	public String getMomentMonth() {
+		return momentMonth;
 	}
 
-	public void setPosted(Date posted) {
-		this.posted = posted;
+	public void setMomentMonth(String momentMonth) {
+		this.momentMonth = momentMonth;
+	}
+
+	public String getMomentYear() {
+		return momentYear;
+	}
+
+	public void setMomentYear(String momentYear) {
+		this.momentYear = momentYear;
 	}
 
 	@Override
