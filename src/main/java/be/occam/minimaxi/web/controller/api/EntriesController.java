@@ -1,4 +1,4 @@
-package be.occam.minimaxi.web.controller;
+package be.occam.minimaxi.web.controller.api;
 
 import static be.occam.utils.spring.web.Controller.response;
 

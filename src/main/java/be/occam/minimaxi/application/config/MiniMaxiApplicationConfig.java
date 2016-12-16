@@ -14,6 +14,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import be.occam.minimaxi.domain.human.Adventurer;
 import be.occam.minimaxi.domain.human.Interpreter;
 import be.occam.minimaxi.domain.human.MailMan;
+import be.occam.minimaxi.domain.service.AdventureService;
 import be.occam.minimaxi.domain.service.EntryService;
 import be.occam.minimaxi.web.util.DataGuard;
 import be.occam.minimaxi.web.util.NoopGuard;
@@ -79,6 +80,11 @@ public class MiniMaxiApplicationConfig {
 		@Bean
 		public EntryService entryService( String acsiDigitaalEmailAddress, String acsiEmailAddress ) {
 			return new EntryService( acsiDigitaalEmailAddress, acsiEmailAddress );
+		}
+		
+		@Bean
+		public AdventureService adventureService() {
+			return new AdventureService();
 		}
 		
 		@Bean

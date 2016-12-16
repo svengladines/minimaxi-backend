@@ -74,15 +74,19 @@ public class EntryService {
 		this.mailMan.deliver( messageForSven );
 		*/
 		
-		AdventureDTO adventure
+		Map<String,AdventureDTO> newAdventures
 			= this.interpreter.translate( entryDTO );
 		
-		List<AdventureDTO> adventures
-			= this.adventurer.read( "svekke" );
-		
-		adventures.add( adventure );
-		
-		adventurer.write( "svekke", adventures );
+		for ( String recipient : newAdventures.keySet() ) {
+			
+			List<AdventureDTO> adventures
+				= this.adventurer.read( recipient );
+			
+			adventures.add( newAdventures.get( recipient ) );
+			
+			this.adventurer.write( recipient, adventures );
+			
+		}
 		
 		return response( entryDTO, HttpStatus.CREATED );
 			
