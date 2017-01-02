@@ -8,9 +8,11 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.net.util.Base64;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -164,6 +166,23 @@ public class Adventurer {
 		}
 		
 		try {
+			
+			for ( AdventureDTO adventure : adventures ) {
+				
+				if ( adventure.getUuid() == null ) {
+					
+					String uuid
+						= Base64.encodeBase64String( UUID.randomUUID().toString().getBytes("utf-8") );
+					
+					adventure.setUuid( uuid );
+					
+				}
+				
+				if ( adventure.getVisited() == null ) {
+					adventure.setVisited( 0 );
+				}
+				
+			}
 			
 			String json
 				= this.objectMapper.writeValueAsString( adventures );

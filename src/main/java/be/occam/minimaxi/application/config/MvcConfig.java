@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import be.occam.minimaxi.web.controller.api.AdventureController;
 import be.occam.minimaxi.web.controller.api.AdventuresController;
 import be.occam.minimaxi.web.controller.api.EntriesController;
 
@@ -43,6 +44,13 @@ public class MvcConfig {
 		public AdventuresController adventuresController() {
 			
 			return new AdventuresController();
+			
+		}
+		
+		@Bean
+		public AdventureController adventureController() {
+			
+			return new AdventureController();
 			
 		}
 		

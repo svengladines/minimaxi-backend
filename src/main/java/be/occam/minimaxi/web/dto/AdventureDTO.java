@@ -10,6 +10,8 @@ public class AdventureDTO {
 	  protected String description;
 	  protected String date;
 	  protected String mediaURL;
+	  protected Integer visited;
+	  protected String uuid;
 	  
 	  public String getMedia() {
 		return media;
@@ -61,6 +63,22 @@ public class AdventureDTO {
 	
 	public void setMediaURL(String mediaURL) {
 		this.mediaURL = mediaURL;
+	}
+
+	public Integer getVisited() {
+		return visited;
+	}
+
+	public void setVisited(Integer visited) {
+		this.visited = visited;
+	}
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
 	}
 	
 }

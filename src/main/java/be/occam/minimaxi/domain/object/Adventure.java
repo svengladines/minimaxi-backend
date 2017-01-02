@@ -2,12 +2,14 @@ package be.occam.minimaxi.domain.object;
 
 public class Adventure {
 	
+	  protected String uuid;
 	  protected String media;
 	  protected String type;
 	  protected String title;
 	  protected String description;
 	  protected String date;
 	  protected String mediaURL;
+	  protected Integer visited;
 	  
 	  public String getMedia() {
 		return media;
@@ -48,7 +50,21 @@ public class Adventure {
 	public void setMediaURL(String mediaURL) {
 		this.mediaURL = mediaURL;
 	}
-	  
-	  
 
+	public Integer getVisited() {
+		return visited;
+	}
+
+	public void setVisited(Integer visited) {
+		this.visited = visited;
+	}
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
+	
 }

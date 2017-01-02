@@ -81,6 +81,43 @@ public class AdventureService {
 			
 	}
 	
+	@Transactional( readOnly=false )
+	public Result<AdventureDTO> update( String recipient, AdventureDTO adventure ) {
+		
+		logger.info( "update, set visited to one" );
+		
+		Result<AdventureDTO> result
+			= new Result<AdventureDTO>();
+		
+		List<AdventureDTO> adventures = this.adventurer.read( recipient );
+		
+		AdventureDTO updated
+			= null;
+		
+		for ( AdventureDTO a : adventures ) {
+			
+			if ( ( a.getUuid() != null ) && a.getUuid().equals( adventure.getUuid() ) ) {
+				a.setVisited( 1 );
+				updated = a;
+				break;
+			}
+		
+			
+		}
+		
+		if ( updated != null ) {
+			result.setValue( Value.OK );
+			result.setObject( updated );
+		}
+		else {
+			result.setValue( Value.NOK );
+		}
+		
+		return result;
+			
+	}
+
+	
 	public AdventureService guard() {
 		this.dataGuard.guard();
 		return this;
