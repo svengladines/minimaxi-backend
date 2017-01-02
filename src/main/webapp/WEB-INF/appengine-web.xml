@@ -5,5 +5,7 @@
   <threadsafe>true</threadsafe>
   <system-properties>
   	<property name="spring.profiles.active" value="production" />
+  	<property name="ftp.user" value="debrodders.be" />
+  	<property name="ftp.password" value="debrodders2230" />
   </system-properties>
 </appengine-web-app>

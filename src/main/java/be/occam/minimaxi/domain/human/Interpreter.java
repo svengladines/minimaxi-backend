@@ -20,7 +20,7 @@ public class Interpreter {
 			
 			adventure.setTitle( entry.getTitle() );
 			adventure.setDescription( entry.getDescription() );
-			adventure.setType( "pr" );
+			adventure.setType ( entry.getMediaType().toLowerCase() );
 			
 			String date 
 				= String.format( "%s/%s/%s", entry.getMomentDay(), entry.getMomentMonth(), entry.getMomentYear() );
@@ -28,6 +28,9 @@ public class Interpreter {
 			adventure.setDate( date );
 			
 			if ( "Image".equals( entry.getMediaType() ) ) {
+				adventure.setMedia( "img" );
+			}
+			else if ( "Born".equals( entry.getMediaType() ) ) {
 				adventure.setMedia( "img" );
 			}
 			

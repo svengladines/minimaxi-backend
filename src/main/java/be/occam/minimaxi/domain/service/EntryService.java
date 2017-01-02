@@ -18,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.transaction.annotation.Transactional;
 
 import be.occam.minimaxi.domain.human.Adventurer;
 import be.occam.minimaxi.domain.human.Interpreter;
@@ -25,6 +26,7 @@ import be.occam.minimaxi.domain.human.MailMan;
 import be.occam.minimaxi.domain.object.Entry;
 import be.occam.minimaxi.web.dto.AdventureDTO;
 import be.occam.minimaxi.web.dto.EntryDTO;
+import be.occam.minimaxi.web.util.DataGuard;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 
@@ -45,6 +47,9 @@ public class EntryService {
 	@Resource
 	Interpreter interpreter;
 	
+	@Resource
+	DataGuard dataGuard;
+	
 	protected final String fromEmailAddress;
 	protected final String toEmailAddress;
 	
@@ -55,6 +60,7 @@ public class EntryService {
 		logger.info( "entry service started, from-email address is [{}], to-email address is [{}]", fromEmailAddress, toEmailAddress );
 	}
 	
+	@Transactional( readOnly=false )
 	public ResponseEntity<EntryDTO> accept( EntryDTO entryDTO) {
 		
 		logger.info( "accept [{}]", entryDTO );
@@ -201,5 +207,10 @@ public class EntryService {
 		return message;
     	
     }
+	
+	public EntryService guard() {
+		this.dataGuard.guard();
+		return this;
+	}
 
 }

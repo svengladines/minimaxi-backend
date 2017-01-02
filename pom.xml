@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   	<modelVersion>4.0.0</modelVersion>
 	
- 	<groupId>be.occam.acsi</groupId>
+ 	<groupId>be.occam.minimaxi</groupId>
  	<artifactId>minimaxi-backend</artifactId>
   	<version>1.0-LATEST-SNAPSHOT</version>
   	<packaging>war</packaging>
@@ -14,6 +14,13 @@
 	</parent>
 	
 	<dependencies>
+	
+		<dependency>
+			<type>jar</type>
+			<groupId>be.occam</groupId>
+			<artifactId>minimaxi-model</artifactId>
+			<version>1.0-LATEST-SNAPSHOT</version>
+		</dependency>
 	
 		<dependency>
 			<type>jar</type>

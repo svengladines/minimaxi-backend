@@ -10,9 +10,11 @@ import javax.annotation.Resource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.transaction.annotation.Transactional;
 
 import be.occam.minimaxi.domain.human.Adventurer;
 import be.occam.minimaxi.web.dto.AdventureDTO;
+import be.occam.minimaxi.web.util.DataGuard;
 import be.occam.minimaxi.web.util.MiniMaxi;
 import be.occam.utils.spring.web.Result;
 import be.occam.utils.spring.web.Result.Value;
@@ -25,10 +27,14 @@ public class AdventureService {
 	@Resource
 	Adventurer adventurer;
 	
+	@Resource
+	DataGuard dataGuard;
+	
 	public AdventureService( ) {
 		logger.info( "adventure service started" );
 	}
 	
+	@Transactional( readOnly=true )
 	public Result<List<Result<AdventureDTO>>> query( String q ) {
 		
 		logger.info( "query, q is [{}]", q );
@@ -73,6 +79,11 @@ public class AdventureService {
 		
 		return result;
 			
+	}
+	
+	public AdventureService guard() {
+		this.dataGuard.guard();
+		return this;
 	}
 
 }

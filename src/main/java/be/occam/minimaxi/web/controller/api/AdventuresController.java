@@ -43,7 +43,7 @@ public class AdventuresController {
 		logger.info( "GET reveived" );
 		
 		Result<List<Result<AdventureDTO>>> adventures
-			= adventureService.query( recipient );
+			= adventureService.guard().query( recipient );
 		
 		return response(adventures, HttpStatus.OK );
 			

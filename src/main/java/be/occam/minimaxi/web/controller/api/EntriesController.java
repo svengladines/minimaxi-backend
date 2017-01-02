@@ -54,7 +54,7 @@ public class EntriesController {
 		httpHeaders.add("Access-Control-Allow-Methods", "GET,OPTIONS" );
 		httpHeaders.add("Access-Control-Allow-Credentials","true");
 		
-		this.entryService.accept( entryDTO );
+		this.entryService.guard().accept( entryDTO );
 
 		ResponseEntity<EntryDTO> response
 			= new ResponseEntity<EntryDTO>( entryDTO , httpHeaders, HttpStatus.OK );
