@@ -112,6 +112,15 @@ public class Adventurer {
 		
 	}
 	
+	public Story readStory( String recipient ) {
+		
+		Story story
+			= this.storyRepository.findByRecipient( recipient );
+		
+		return story;
+		
+	}
+	
 	/*
 	public void write( String recipient, List<AdventureDTO> adventures ) {
 		
@@ -150,20 +159,76 @@ public class Adventurer {
 	}
 	*/
 	
-	public void write( String recipient, List<AdventureDTO> adventures ) {
-		
-		Story story
-			= this.storyRepository.findByRecipient( recipient );
+	public Story writeStory( String recipient, Story story, AdventureDTO addOrUpdateAdventure ) {
 		
 		if ( story == null ) {
 			
 			story = new Story();
 			story.setRecipient( recipient );
+			story.setJson( "[]" );
 			story = this.storyRepository.saveAndFlush( story );
 			story.setUuid( KeyFactory.keyToString( story.getKey() ) );
 			story = this.storyRepository.saveAndFlush( story );
 			
 		}
+		
+		try {
+			
+			String json
+				= story.getJson();
+			
+			AdventureDTO[] adventures 
+				= this.objectMapper.reader( AdventureDTO[].class ).readValue( json );
+			
+			List<AdventureDTO> toWrite
+				= list();
+			
+			toWrite.addAll( Arrays.asList( adventures) );
+			toWrite.add( addOrUpdateAdventure );
+			
+			for ( AdventureDTO adventure : toWrite ) {
+				
+				if ( adventure.getUuid() == null ) {
+					
+					String uuid 
+						= UUID.randomUUID().toString();
+					
+					String base64
+						= Base64.encodeBase64StringUnChunked( uuid.getBytes("utf-8") );
+					
+					adventure.setUuid( base64 );
+					
+				}
+				else if ( adventure.getUuid().equals ( addOrUpdateAdventure.getUuid() ) ) {
+					
+					adventure.setVisited( 1 );
+					
+				}
+				
+				if ( adventure.getVisited() == null ) {
+					adventure.setVisited( 0 );
+				}
+				
+			}
+			
+			json = this.objectMapper.writeValueAsString( toWrite.toArray( new AdventureDTO[] {} ) );
+			
+			story.setJson( json );
+			
+			story = this.storyRepository.saveAndFlush( story );
+			
+			
+		} catch (Exception e) {
+			
+			logger.warn( "failed to write story", e );
+			
+		}
+		
+		return story;
+		
+	}
+	
+	public void write( String recipient, List<AdventureDTO> adventures ) {
 		
 		try {
 			
@@ -187,9 +252,9 @@ public class Adventurer {
 			String json
 				= this.objectMapper.writeValueAsString( adventures );
 			
-			story.setJson( json );
+			// story.setJson( json );
 			
-			story = this.storyRepository.saveAndFlush( story );
+			// story = this.storyRepository.saveAndFlush( story );
 			
 			
 		} catch (Exception e) {

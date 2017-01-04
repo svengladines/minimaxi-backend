@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -18,12 +17,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import be.occam.minimaxi.domain.human.Adventurer;
 import be.occam.minimaxi.domain.human.Interpreter;
 import be.occam.minimaxi.domain.human.MailMan;
 import be.occam.minimaxi.domain.object.Entry;
+import be.occam.minimaxi.repository.Story;
 import be.occam.minimaxi.web.dto.AdventureDTO;
 import be.occam.minimaxi.web.dto.EntryDTO;
 import be.occam.minimaxi.web.util.DataGuard;
@@ -50,8 +51,12 @@ public class EntryService {
 	@Resource
 	DataGuard dataGuard;
 	
-	protected final String fromEmailAddress;
-	protected final String toEmailAddress;
+	protected String fromEmailAddress;
+	protected String toEmailAddress;
+	
+	public EntryService() {
+		
+	}
 	
 	public EntryService( String fromEmailAddress, String toEmailAddress ) {
 		this.fromEmailAddress = fromEmailAddress;
@@ -83,14 +88,17 @@ public class EntryService {
 		Map<String,AdventureDTO> newAdventures
 			= this.interpreter.translate( entryDTO );
 		
+		logger.info( "entry translated into [{}] adventures", newAdventures.values().size() );
+		
 		for ( String recipient : newAdventures.keySet() ) {
 			
-			List<AdventureDTO> adventures
-				= this.adventurer.read( recipient );
+			Story story = this.adventurer.readStory( recipient );
 			
-			adventures.add( newAdventures.get( recipient ) );
+			logger.info( "read story -> {}", story != null ? story.getJson() : "no story found" );
 			
-			this.adventurer.write( recipient, adventures );
+			story = this.adventurer.writeStory( recipient, story, newAdventures.get( recipient ) );
+			
+			logger.info( "wrote story -> {}", story.getJson() );
 			
 		}
 		

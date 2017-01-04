@@ -19,6 +19,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import be.occam.minimaxi.domain.human.Adventurer;
 import be.occam.minimaxi.domain.human.Interpreter;
@@ -70,6 +71,7 @@ public class MiniMaxiApplicationConfig {
 	}
 	
 	@Configuration
+	@EnableTransactionManagement
 	public static class DomainConfigShared {
 		
 		@Bean

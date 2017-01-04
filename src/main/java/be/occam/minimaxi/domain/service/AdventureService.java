@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
 
 import be.occam.minimaxi.domain.human.Adventurer;
+import be.occam.minimaxi.repository.Story;
 import be.occam.minimaxi.web.dto.AdventureDTO;
 import be.occam.minimaxi.web.util.DataGuard;
 import be.occam.minimaxi.web.util.MiniMaxi;
@@ -49,6 +50,7 @@ public class AdventureService {
 			= map();
 		
 		for ( String recipient : MiniMaxi.RECIPIENTS ) {
+			
 			List<AdventureDTO> adventures = this.adventurer.read( recipient );
 			
 			map.put( recipient, adventures );
@@ -56,6 +58,14 @@ public class AdventureService {
 		}
 		
 		for ( String recipient : map.keySet() ) {
+			
+			if ( q != null ) {
+				
+				if ( ! q.equals( recipient ) ) {
+					continue;
+				}
+				
+			}
 			
 			List<AdventureDTO> adventures
 				= map.get( recipient );
@@ -89,29 +99,15 @@ public class AdventureService {
 		Result<AdventureDTO> result
 			= new Result<AdventureDTO>();
 		
-		List<AdventureDTO> adventures = this.adventurer.read( recipient );
 		
-		AdventureDTO updated
-			= null;
+		Story story 
+			= this.adventurer.readStory( recipient );
 		
-		for ( AdventureDTO a : adventures ) {
+		this.adventurer.writeStory( recipient, story, adventure );
 			
-			if ( ( a.getUuid() != null ) && a.getUuid().equals( adventure.getUuid() ) ) {
-				a.setVisited( 1 );
-				updated = a;
-				break;
-			}
-		
-			
-		}
-		
-		if ( updated != null ) {
-			result.setValue( Value.OK );
-			result.setObject( updated );
-		}
-		else {
-			result.setValue( Value.NOK );
-		}
+		result.setValue( Value.OK );
+		result.setObject( adventure );
+
 		
 		return result;
 			

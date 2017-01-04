@@ -12,6 +12,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import be.occam.minimaxi.web.util.DataGuard;
 import be.occam.minimaxi.web.util.DevGuard;
@@ -26,6 +27,9 @@ import com.google.apphosting.api.ApiProxy;
 @Configuration
 public class MiniMaxiApplicationConfigForDev {
 	
+	final static String JPA_PKG 
+		= "be.occam.minimaxi.repository";
+
 	@Profile( { ConfigurationProfiles.DEV } )
 	public static class DbConfigForDev {
 		
@@ -39,15 +43,15 @@ public class MiniMaxiApplicationConfigForDev {
 	}
 	
 	@Configuration
-	@EnableJpaRepositories(MiniMaxiApplicationConfig.BASE_PKG )
-	@Profile( { ConfigurationProfiles.DEV, ConfigurationProfiles.TEST } )
+	@EnableJpaRepositories( JPA_PKG )
+	@Profile( { ConfigurationProfiles.DEV } )
 	static class EntityManagerConfig {
 		
 		@Bean
 		public LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean(PersistenceProvider persistenceProvider, LocalServiceTestHelper dataStoreHelper ) {
 			
 			LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-			factory.setPackagesToScan( MiniMaxiApplicationConfig.BASE_PKG );
+			factory.setPackagesToScan( JPA_PKG );
 			factory.setPersistenceProvider( persistenceProvider );
 			// factory.setDataSource(jpaDataSource);
 			factory.setPersistenceUnitName("minimaxi-jpa-dev-test");
@@ -88,7 +92,7 @@ public class MiniMaxiApplicationConfigForDev {
 	}
 	
 	@Configuration
-	@Profile( { ConfigurationProfiles.DEV, ConfigurationProfiles.TEST } )
+	@Profile( { ConfigurationProfiles.DEV } )
 	public static class LocalServiceConfig {
 		
 		@Bean
